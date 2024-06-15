@@ -173,13 +173,13 @@ RUN groupadd -r splash && useradd --no-log-init --create-home -r -g splash splas
 RUN chown -R splash:splash /app
 USER splash:splash
 
-RUN mkdir -p /app/splash/filters
+RUN mkdir -p /app/splash/js-profiles /app/splash/proxy-profiles /app/splash/filters /app/splash/lua_modules
 
 VOLUME [ \
-    "/etc/splash/proxy-profiles", \
-    "/etc/splash/js-profiles", \
+    "/app/splash/proxy-profiles", \
+    "/app/splash/js-profiles", \
     "/app/splash/filters", \
-    "/etc/splash/lua_modules" \
+    "/app/splash/lua_modules" \
 ]
 
-CMD python3 /app/bin/splash --proxy-profiles-path /etc/splash/proxy-profiles --js-profiles-path /etc/splash/js-profiles --filters-path /app/splash/filters --lua-package-path /etc/splash/lua_modules/?.lua --port $PORT
+CMD python3 /app/bin/splash --proxy-profiles-path /app/splash/proxy-profiles --js-profiles-path /app/splash/js-profiles --filters-path /app/splash/filters --lua-package-path /app/splash/lua_modules/?.lua --port $PORT
