@@ -177,10 +177,10 @@ USER splash:splash
 VOLUME [ \
     "/etc/splash/proxy-profiles", \
     "/etc/splash/js-profiles", \
-    "/etc/splash/filters", \
+    "/app/splash/filters", \
     "/etc/splash/lua_modules" \
 ]
 
 RUN mkdir -p /etc/splash/filters
 
-CMD python3 /app/bin/splash --proxy-profiles-path /etc/splash/proxy-profiles --js-profiles-path /etc/splash/js-profiles --filters-path /etc/splash/filters --lua-package-path /etc/splash/lua_modules/?.lua --port $PORT
+CMD python3 /app/bin/splash --proxy-profiles-path /etc/splash/proxy-profiles --js-profiles-path /etc/splash/js-profiles --filters-path /app/splash/filters --lua-package-path /etc/splash/lua_modules/?.lua --port $PORT
